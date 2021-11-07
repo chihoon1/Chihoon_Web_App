@@ -15,7 +15,9 @@ from .operation_functions import *
 class MacroEcon():
     def __init__(self, empty_instance=False):
         # empty_instance is used to create an instance without setting all the attributes at initialization
-        self.__Alpha_Vantage_key = "SVVM4XB84BCI15YH"
+        
+        # I'm sorry but I can't share my API key in public
+        self.__Alpha_Vantage_key = your_api_key
         self.browser = mechanicalsoup.Browser()
         self.time = datetime.datetime.now()  # represents the time when the economy data was acquired from API
         if empty_instance is False:
