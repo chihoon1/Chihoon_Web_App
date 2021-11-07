@@ -1,0 +1,26 @@
+{% extends "stock_main_page.html" %}
+
+{% block extracontent %}
+    {% if page_error %}
+        <h1>{{ page_error }}</h1>
+        <h2><a href="{% url 'stockmarket:main-page' %}">Back to the app's main page</a></h2>
+    {% else %}
+        <h1 style="color: #00299E;">{{ stock_name }}</h1>
+        <h2>{{ stock_ticker }}</h2>
+        <br>
+        {% for key, value in today_stock_data.items %}
+            <h2>{{ key }}: <span class="value">{{ value }}</span></h2>
+        {% endfor %}
+    {% endif %}
+    <br>
+    <h1 style="color: #00299E;">Company Financials</h1>
+    {% if financials_error %}
+        <h2>{{ financials_error }}</h2>
+    {% else %}
+        {% for elem in financials %}
+            {% for key, value in elem %}
+                <h2>{{ key }}: <span class="value">{{ value }}</span></h2>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+{% endblock extracontent %}

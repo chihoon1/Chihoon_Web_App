@@ -1,0 +1,18 @@
+{% extends "stock_main_page.html" %}
+
+{% block extracontent %}
+    {% if api_error %}
+        <h1>{{ api_error }}</h1>
+        <h2><a href="{% url 'stockmarket:main-page' %}">Back to the app's main page</a></h2>
+    {% else %}
+        <h2>Choose the ticker that matches the company you are looking for</h2>
+        <form class="ticker-selection" method="POST"> {% csrf_token %}
+            <select name="ticker-selection" size="7" style="width: 500px">
+                {% for key, value in tickers.items %}
+                    <option value="{{ key }}: {{ value }}">{{ key }}: {{ value }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit">
+        </form>
+    {% endif %}
+{% endblock extracontent %}

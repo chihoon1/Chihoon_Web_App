@@ -1,0 +1,9 @@
+{% extends "stock_main_page.html" %}
+
+{% block extracontent %}
+    {% if error_message%}
+        <h2>{{ error_message }}</h2>
+    {% else %}
+        <img src="data:image/png;base64, {{ chart }}">
+    {% endif %}
+{% endblock extracontent %}

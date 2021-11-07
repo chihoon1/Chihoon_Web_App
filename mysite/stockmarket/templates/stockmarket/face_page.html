@@ -1,0 +1,16 @@
+{% extends "stock_main_page.html" %}
+
+{% block extracontent %}
+    <br>
+    <br>
+    <br>
+    <h2>
+        <span class="titles">Stock Information</span>
+        <br>
+        <form class="company-name" method="POST"> {% csrf_token %}
+            <label name="company-name">Search for a company stock</label>
+            <input type="text" name="company-name" placeholder="Type Company Name Here">
+            <input type="submit" value="SEARCH">
+        </form>
+    </h2>
+{% endblock extracontent %}

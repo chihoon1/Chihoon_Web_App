@@ -1,0 +1,16 @@
+{% extends "stock_main_page.html" %}
+
+{% block extracontent %}
+    {% if error_message%}
+        <h2>{{ error_message }}</h2>
+        <h2><a href="{% url 'stockmarket:main-page' %}">Back to the app's main page</a></h2>
+    {% else %}
+        <img src="data:image/png;base64, {{ chart }}">
+        <h2>Predicted {{ hidden_state }} {{ next_date }}: <span class="value">{{ most_probable_state }}</span></h2>
+        {% if additional_message %}
+            {% for message in additional_message %}
+                <h3>{{ message }}</h3>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+{% endblock extracontent %}
