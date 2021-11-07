@@ -1,0 +1,77 @@
+.play-button {
+    background-color: #66B8D6;
+    width: 350px;
+    height: 100px;
+    border-radius: 7px;
+}
+.play-button:hover{
+    background-color: red;
+    opacity: 0.5;
+}
+.play-button-text {
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+.value {
+    color: #FD9703;
+}
+.row-container {
+    display: inline-block;
+    float: left;
+}
+img {
+    height: 33px;
+    width: 33px;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+#white-stone {
+    background-image: url('go_board_white.png');
+    background-size: 30px 30px;
+    height: 33px;
+    width: 33px;
+}
+#black-stone {
+    background-image: url('go_board_black.png');
+    background-size: 30px 30px;
+    height: 33px;
+    width: 33px;
+}
+#empty-board {
+    background-image: url('go_board.png');
+    background-size: 30px 30px;
+    height: 33px;
+    width: 33px;
+}
+#white-stone:hover {
+    background-image: none;
+    background-color: red;
+}
+#black-stone:hover {
+    background-image: none;
+    background-color: red;
+}
+#empty-board:hover {
+    background-image: none;
+    background-color: #7DEC0D;
+}
+#white-stone-no-click {
+    background-image: url('go_board_white.png');
+    background-size: 30px 30px;
+    height: 33px;
+    width: 33px;
+}
+#black-stone-no-click {
+    background-image: url('go_board_black.png');
+    background-size: 30px 30px;
+    height: 33px;
+    width: 33px;
+}
+#empty-board-no-click {
+    background-image: url('go_board.png');
+    background-size: 30px 30px;
+    height: 33px;
+    width: 33px;
+}
