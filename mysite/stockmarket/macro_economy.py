@@ -17,6 +17,7 @@ class MacroEcon():
         # empty_instance is used to create an instance without setting all the attributes at initialization
         
         # I'm sorry but I can't share my API key in public
+        # you can get your free Alpha Vintage API key in https://polygon.io/stocks?gclid=Cj0KCQjw8p2MBhCiARIsADDUFVEHNFnLk6MIN7jCZR72_QWQF1W4UPqceq-fpOwUWTuGnDSGSYqO-K0aArp7EALw_wcB
         self.__Alpha_Vantage_key = your_api_key
         self.browser = mechanicalsoup.Browser()
         self.time = datetime.datetime.now()  # represents the time when the economy data was acquired from API
