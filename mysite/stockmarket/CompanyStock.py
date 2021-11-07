@@ -20,8 +20,12 @@ class CompanyStock():
         self.stock_splits = args[3] if (args is not None and len(args) > 3) else None
         self.interval = args[4] if (args is not None and len(args) > 4) else None
         self.financials = args[5] if (args is not None and len(args) > 5) else None
-        self._Alpha_Vantage_key = "SVVM4XB84BCI15YH"
-        self.__polygon_io_key = "U6vW1exaN05RpORkVBISba_g6cxFcnuV"
+        
+        # I'm sorry but I can't share my API key in public
+        # you can get your free Alpha Vintage API key in https://polygon.io/stocks?gclid=Cj0KCQjw8p2MBhCiARIsADDUFVEHNFnLk6MIN7jCZR72_QWQF1W4UPqceq-fpOwUWTuGnDSGSYqO-K0aArp7EALw_wcB
+        self._Alpha_Vantage_key = your_api_key
+        # you can get your free polygon io API key in https://polygon.io/
+        self.__polygon_io_key = your_polygon_io_api_key
 
         self.stock_data = None
 
