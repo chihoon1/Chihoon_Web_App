@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'home/contact_style.css' %}">
+{% endblock style %}
+
+{% block heading %}
+    <h1 id="top" style="font-size: 3rem;">Contact</h1>
+{% endblock heading %}
+{% block content %}
+    <h4 style="font-size: 2rem; line-height: 2.7rem; padding-left: 4rem;">
+        Developer: Chihoon Lee
+        <br>
+    </h4>
+    <p style="padding-left: 4rem;">
+        <img src="{% static 'home/nebula.jpg' %}" alt="my picture" style="width: 400px; height: 400px;">
+        <br>
+        <a href="https://www.linkedin.com/in/chihoonlee1" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+        </a>
+    </p>
+    <button class="topbutton">
+        <a href="#top" style="color: white">Back to Top</a>
+    </button>
+
+{% endblock %}

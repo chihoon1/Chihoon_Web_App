@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'stockmarket/main_style.css'%}" type="text/css" />
+{% block extrastyle %}
+{% endblock extrastyle %}
+{% endblock style %}
+
+{% block content %}
+<div id="top" class="todaymarket">
+    <h1>
+        <div id="marquee1">
+            <span>Fed Interest Rate: <span class="value">{{ fed_rate }}%</span>&emsp;</span>
+            <span>Long-term Treasury Yield: <span class="value">{{ longterm_treasury_yield }}%</span>&emsp;</span>
+            <span>Inflation Rate: <span class="value">{{ inflation_rate }}%</span>&emsp;</span>
+            <span>Unemployment Rate: <span class="value">{{ unemployment_rate }}%</span>&emsp;</span>
+            <span>Last Quarter GDP: <span class="value">{{ gdp }}%</span>&emsp;</span>
+            <span>VIX Index: <span class="value">{{vix}}</span>&emsp;</span>
+        </div>
+        <div id="marquee2">
+            <span>Fed Interest Rate: <span class="value">{{ fed_rate }}%</span>&emsp;</span>
+            <span>Long-term Treasury Yield: <span class="value">{{ longterm_treasury_yield }}%</span>&emsp;</span>
+            <span>Inflation Rate: <span class="value">{{ inflation_rate }}%</span>&emsp;</span>
+            <span>Unemployment Rate: <span class="value">{{ unemployment_rate }}%</span>&emsp;</span>
+            <span>Last Quarter GDP: <span class="value">{{ gdp }}%</span>&emsp;</span>
+            <span>VIX Index: <span class="value">{{vix}}</span>&emsp;</span>
+        </div>
+    </h1>
+</div>
+
+<h2>
+    <span class="titles">GRAPH OPTION</span>
+        <form class="graph-menu" method="POST"> {% csrf_token %}
+            <label for="graph-options">Graph Options:</label>
+            <select name="graph-options" id="graph-options">
+                <option value="fed-rate">Fed Interest Rate</option>
+                <option value="treasury-yield">Long-term Treasury Yield</option>
+                <option value="inflation-rate">Inflation Rate</option>
+                <option value="unemployment-rate">Unemployment Rate</option>
+                <option value="gdp">Quarterly GDP</option>
+                {% if stock_graph_options is not None %}
+                    {% for elem in stock_graph_options %}
+                        <option value=elem>{{ elem }}</option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+            <input type="submit" value="GRAPH">
+        </form>
+</h2>
+
+{% block extracontent %}
+{% endblock extracontent %}
+
+
+<br>
+<br>
+<br>
+<h2>
+    <span class="titles">Predict Data</span>
+    <form class="predict_data" method="POST"> {% csrf_token %}
+        <label>Choose the Data to be predicted</label>
+        <br>
+        <select name="predictor-selection" size="7" style="width: 500px">
+            {% for elem in predict_options %}
+                <option value="{{ elem }}">{{ elem }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+</h2>
+<br>
+<h2><a href="{% url 'stockmarket:main-page' %}">Back to the app's main page</a></h2>
+
+<p>
+    Economic Data as of {{ time }}
+</p>
+
+
+<button class="topbutton">
+    <a href="#top" style="color: white">Back to Top</a>
+</button>
+{% endblock content %}

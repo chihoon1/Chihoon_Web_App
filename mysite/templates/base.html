@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/style.css' %}" />
+    {% block style %}
+    {% endblock style %}
+    <title>Chihoon's Site</title>
+</head>
+<body>
+    {% block heading %}
+    {% endblock heading%}
+
+    <div class="topnavbar">
+        <a class="active" href="{% url 'home-view' %}">Home</a>
+        <a href="{% url 'about-view' %}">About</a>
+        <a href="{% url 'gomoku:main-page' %}">Gomoku</a>
+        <a href="{% url 'stockmarket:main-page' %}">Stock Market</a>
+        <a href="{% url 'contact-view' %}">Contact</a>
+    </div>
+
+    {% block navbar %}
+    {% endblock navbar %}
+
+    {% block content %}
+    {% endblock content %}
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'home/home_style.css' %}" />
+{% endblock style %}
+
+
+{% block heading %}
+    <h1 style="font-size: 3rem;">Chihoon's Website</h1>
+{% endblock heading %}
+
+{% block content %}
+    <p id="header">
+        Welcome to My Web!
+    </p>
+    <p id="guide">
+        Click an icon in Navigation bar to use application
+    </p>
+    <p id="warning">
+        <br>
+        <br>
+        <br>
+        Warning: This site may not be mobile-friendly!
+    </p>
+{% endblock %}
