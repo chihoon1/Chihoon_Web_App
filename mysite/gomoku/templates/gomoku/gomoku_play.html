@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'gomoku/gomoku_main_style.css'%}" type="text/css" />
+{% block extrastyle %}
+{% endblock extrastyle %}
+{% endblock style %}
+
+{% block content %}
+    {% if invalid_access %}
+        <h2>{{ invalid_access }}
+        <a href="{% url 'gomoku:main-page' %}">Back to the app's main page</a>
+        </h2>
+    {% else %}
+        <br>
+        <h2>Your stone: <span class="value">{{ your_stone_color }}</span>,    Computer stone: <span class="value">{{ computer_stone_color }}</span></h2>
+        {% if game_run_message %}
+            <h2>{{ game_run_message }}</h2>
+        {% else %}
+            <br>
+        {% endif %}
+        {% if second_game_run_message %}
+            <h2>{{ second_game_run_message }}</h2>
+        {% else %}
+            <h2>Your turn</h2>
+        {% endif %}
+        <br>
+        {% if any_winner %}
+            <div class="go-board">
+                {% for row in current_board %}
+                    <div class="row-container">
+                        {% for col in row %}
+                            {% for location, stone in col.items %}
+                                <div class="image-container">
+                                    {% if stone == 0 %}
+                                        <button name="player_move" value="{{ location }}" id="white-stone-no-click"></button>
+                                    {% elif stone == 1 %}
+                                        <button name="player_move" value="{{ location }}" id="black-stone-no-click"></button>
+                                    {% else %}
+                                        <button name="player_move" value="{{ location }}" id="empty-board-no-click"></button>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <form name="player_move" method="POST"> {% csrf_token %}
+                <div class="go-board">
+                    {% for row in current_board %}
+                        <div class="row-container">
+                            {% for col in row %}
+                                {% for location, stone in col.items %}
+                                    <div class="image-container">
+                                        {% if stone == 0 %}
+                                            <button name="player_move" value="{{ location }}" id="white-stone"></button>
+                                        {% elif stone == 1 %}
+                                            <button name="player_move" value="{{ location }}" id="black-stone"></button>
+                                        {% else %}
+                                            <button name="player_move" value="{{ location }}" id="empty-board"></button>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </form>
+            <br>
+        {% endif %}
+    {% endif %}
+    <form name="reset" method="POST"> {% csrf_token %}
+        <button name="reset" value="reset" type="submit" class="play-button">RESTART GAME</button>
+    </form>
+    <form name="end_game" method="POST"> {% csrf_token %}
+        <button name="end_game" value="end_game" type="submit" class="play-button">END GAME</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>RULE REMINDER</h1>
+    <h2>
+        <ul>
+            <li>Black stone starts first</li>
+            <li>The winner is the first player to form an unbroken chain of five stones horizontally, vertically, or diagonally</li>
+            <li>Placing so that a line of more than five stones of the same color is created does not result in a win</li>
+            <li>The rule of three and three bans a move that simultaneously forms two open rows of three stones (rows not blocked by an opponent's stone at either end)</li>
+        </ul>
+    </h2>
+{% endblock content %}

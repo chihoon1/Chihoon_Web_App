@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'gomoku/gomoku_main_style.css'%}" type="text/css" />
+{% block extrastyle %}
+{% endblock extrastyle %}
+{% endblock style %}
+
+{% block content %}
+    <h2 style="text-align: center;">Randomly Selected Your Stone Color: <span style="color: #F49617;">{{ player_stone_color }}</span></h2>
+    <br>
+    <h2 style="text-align: center;">Select the Difficulty level of the Computer Player</h2>
+    <form name="difficulty" method="POST" style="text-align: center;"> {% csrf_token %}
+        <div style="display: inline-block;">
+            <button name="difficulty" type="submit" value="easy" class="play-button" style="background-color: green;">
+                <span class="play-button-text">Easy</span>
+            </button>
+            <button name="difficulty" type="submit" value="medium" class="play-button" style="background-color: #1796F4;">
+                <span class="play-button-text">Medium</span>
+            </button>
+            <button name="difficulty" type="submit" value="hard" class="play-button" style="background-color: red;">
+                <span class="play-button-text">Hard</span>
+            </button>
+        </div>
+    </form>
+    <br>
+    <br>
+    <h2 style="color: red; text-align: center;">Warning: As the difficulty level gets harder, the application will run slower</h2>
+
+{% endblock content %}

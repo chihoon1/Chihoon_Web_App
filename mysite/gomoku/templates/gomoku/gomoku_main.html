@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'gomoku/gomoku_main_style.css'%}" type="text/css" />
+{% block extrastyle %}
+{% endblock extrastyle %}
+{% endblock style %}
+
+{% block content %}
+    <h1>About Gomoku</h1>
+    <h3>Gomoku is traditionally played with Go pieces (black and white stones) on a Go board. <br>
+    Players alternate turns placing a stone of their color on an empty intersection. Black stone starts first. <br>
+    The winner is the first player to form an unbroken chain of five stones horizontally, vertically, or diagonally. <br>
+    However, Placing so that a line of more than five stones of the same color is created does not result in a win. <br>
+    There are various optional rules. Here, only the rule of three and three applies <br>
+    The rule of three and three bans a move that simultaneously forms two open rows of three stones (rows not blocked by an opponent's stone at either end).<br>
+    For more about Gomoku, <a href="https://en.wikipedia.org/wiki/Gomoku">Go Wikipedia</a> </h3>
+    <br>
+    <br>
+    <br>
+    <form name="play" method="post" style="text-align: center;"> {% csrf_token %}
+        <button name="play" type="submit" value="play" class="play-button">
+            <span class="play-button-text">Play a Gomoku game</span>
+        </button>
+    </form>
+
+{% endblock content %}
