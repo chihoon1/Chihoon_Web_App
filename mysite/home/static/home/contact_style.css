@@ -1,0 +1,17 @@
+.topbutton {
+    position: fixed;
+        bottom: 10px;
+        float: right;
+        right: 20%;
+        left: 80%;
+        max-width: 50px;
+        width: 100%;
+        font-size: 12px;
+        background-color: #C0D1AA;
+        padding: .5px;
+        border-radius: 5px;
+}
+
+.topbutton:hover {
+    background-color: #FF9022;
+}

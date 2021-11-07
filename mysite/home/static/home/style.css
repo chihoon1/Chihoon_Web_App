@@ -1,0 +1,23 @@
+.topnavbar {
+    background-color: black;
+    overflow: hidden;
+}
+
+.topnavbar a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 5%; /*14px 16px; */
+    text-decoration: None;
+    font-size: 17px;
+    /* border-radius: 10px;  This property allows you to add rounded corners to elements! */
+}
+
+.topnavbar a:hover {
+    background-color: #BDBDBD;
+    color: black;
+}
+
+.topnavbar a.active {
+    background-color: #FF5733;
+}

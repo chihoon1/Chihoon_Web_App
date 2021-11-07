@@ -1,0 +1,18 @@
+p {
+    text-align: center;
+}
+
+#header {
+    font-size: 2rem;
+    line-spacing: 2.7 rem;
+}
+
+#guide {
+    font-size: 1.5rem;
+    line-spacing: 2.2 rem;
+}
+
+#warning {
+    line-spacing: 2.2 rem;
+    color: red;
+}
