@@ -66,18 +66,20 @@ class MacroEcon():
 
 
     def get_vix(self):
-
-        url = "https://finance.yahoo.com/quote/%5EVIX/"
-        yahoo_finance_vix_page = self.browser.get(url)
-        vix_html = yahoo_finance_vix_page.soup
+        url = "https://www.google.com/finance/quote/VIX:INDEXCBOE"
+        google_finance_vix_page = self.browser.get(url)
+        vix_html = google_finance_vix_page.soup
         vix_html_str = vix_html.prettify()
-        tag_index = vix_html_str.find("Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)")
+        tag_index = vix_html_str.find('class="YMlKec fxKbKc"')
         start_index = tag_index + vix_html_str[tag_index:].find(">") + 1
         end_index = start_index + vix_html_str[start_index:].find("<")
         vix_index = ""
         for i in range(start_index, end_index):
             vix_index += vix_html_str[i]
-        return float(vix_index)
+        try:
+            return float(vix_index)
+        except ValueError:  # ValueError will be raised if there is no class="YMlKec fxKbKc" found
+            return 0
 
 
     def get_fed_interest_rate(self, period="daily"):
