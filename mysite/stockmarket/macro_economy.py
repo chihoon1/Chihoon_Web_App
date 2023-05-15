@@ -34,6 +34,7 @@ class MacroEcon():
         url = "https://www.usinflationcalculator.com/inflation/current-inflation-rates/"
         usinflationcalculator_page = self.browser.get(url)
         usinflationcalculator_html = usinflationcalculator_page.soup
+        '''
         match = usinflationcalculator_html.find_all("div", {"class": "content-sidebar widget-area"})
         html_subset_str = match[0].prettify()
         start_index = html_subset_str.find("<u>") + 3
@@ -43,7 +44,7 @@ class MacroEcon():
         inflation_rate_str = inflation_rate_str.replace("%", "")
         '''
         # this will be used if current web scraping codes are not working
-        match = usinflationcalculator_html.find_all("div", {"class": "entry-content"})
+        match = usinflationcalculator_html.find_all("div", {"class": "td-page-content tagdiv-type"})
         html_subset_str = match[0].prettify()
         #html_subset_str = match[0].text
         curr_month = self.time.month
@@ -58,10 +59,8 @@ class MacroEcon():
         #table_cells = match.select("td")
         #start_index += html_subset_str[start_index:].find(">")
         end_index = start_index + html_subset_str[start_index:].find("<")
-        print("debug: ", html_subset_str[start_index:end_index-1])
-        curr_inflation = float(html_subset_str[start_index:end_index-1])
-        '''
-        curr_inflation = float(inflation_rate_str)
+        print("debug: ", html_subset_str[start_index+1:end_index-1])
+        curr_inflation = float(html_subset_str[start_index+1:end_index-1])
         return curr_inflation
 
 
@@ -105,7 +104,7 @@ class MacroEcon():
         #url = 'https://www.alphavantage.co/query?function=INFLATION_EXPECTATION&apikey=' + self.__Alpha_Vantage_key
         r = requests.get(url)
         inflation = r.json()
-        inflation_rates = [(elem['date'], round(elem['value'],2)) for elem in inflation['data']]
+        inflation_rates = [(elem['date'], round(float(elem['value']),2)) for elem in inflation['data']]
         return inflation_rates  # monthly interval
 
 
