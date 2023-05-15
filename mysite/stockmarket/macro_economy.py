@@ -101,10 +101,11 @@ class MacroEcon():
 
 
     def get_inflation_rate(self):
-        url = 'https://www.alphavantage.co/query?function=INFLATION_EXPECTATION&apikey=' + self.__Alpha_Vantage_key
+        url = 'https://www.alphavantage.co/query?function=INFLATION&apikey=' + self.__Alpha_Vantage_key
+        #url = 'https://www.alphavantage.co/query?function=INFLATION_EXPECTATION&apikey=' + self.__Alpha_Vantage_key
         r = requests.get(url)
         inflation = r.json()
-        inflation_rates = [(elem['date'], elem['value']) for elem in inflation['data']]
+        inflation_rates = [(elem['date'], round(elem['value'],2)) for elem in inflation['data']]
         return inflation_rates  # monthly interval
 
 
